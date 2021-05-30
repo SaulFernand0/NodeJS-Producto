@@ -9,7 +9,6 @@ export const readAllUsers = async (req, res)=>{
         return res.status(500).json('Internal server error...!')
     }
 }
-
 export const readUsers = async (req, res) => {
     try {
         const response = await pool.query('select * from producto where idproducto=$1',[req.params.id]);
@@ -19,7 +18,6 @@ export const readUsers = async (req, res) => {
         res.status(500).json('Internal server error...!');
     }
 }
-
 export const createUser = async (req,res)=>{
     try {
         const{idproducto, nombre, precio, stock}=req.body;
@@ -30,7 +28,6 @@ export const createUser = async (req,res)=>{
         return res.status(500).json('Internal server error...!')
     }
 }
-
 export const updateUsers = async (req, res)=>{
     try{
         const id = parseInt(req.params.id);
@@ -42,7 +39,6 @@ export const updateUsers = async (req, res)=>{
         return res.status(500).json('Internal server error...!')
     }
 }
-
 export const delUsers = async (req, res)=>{
     try{
         const id = parseInt(req.params.id);
