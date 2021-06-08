@@ -4,10 +4,12 @@ const router = Router();
 
 import * as userCtr from '../controllers/user.controller'
 
-router.get('/', userCtr.readAllUsers);
-router.get('/:id', userCtr.readUsers);
-router.post('/add', userCtr.createUser);
-router.put('/update/:id', userCtr.updateUsers);
-router.delete('/delete/:id', userCtr.delUsers);
+const { checkToken } = require('../auth/token_validation');
+
+router.get('/', checkToken, userCtr.readAllUsers);
+router.get('/:id', checkToken, userCtr.readUser);
+router.post('/add', checkToken, userCtr.createUser);
+router.put('/update/:id', checkToken, userCtr.updateUser);
+router.delete('/delete/:id', checkToken, userCtr.dellUser);
 
 export default router;
